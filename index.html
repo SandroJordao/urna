@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
+	<link href="css/default.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/default.js"></script>
+	<title>Eleições</title>
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="teste">
+			<div>[99] Sandro => { <span id="number-99">0</span> }</div>
+			<div>[81] Diniz  => { <span id="number-81">0</span> }</div>
+			<div>[02] Jordão => { <span id="number-02">0</span> }</div>
+			<div>Voto em Branco => { <span id="number-branco">0</span> }</div>
+			<div>Voto Nulo => { <span id="number-nulo">0</span> }</div>
+		</div>
+
+		<div id="dados-votacao" style="display: none;">
+			<input type="text" value="1" id="escola" />
+			<input type="text" value="1" id="campanha" />
+			<input type="text" value="99" class="candidato" id="candidato-99" data-nome="Sandro" data-id="1" data-imagem="candidato.png" data-vice-nome="Caio" data-vice-imagem="candidato.png" />
+			<input type="text" value="81" class="candidato" id="candidato-81" data-nome="Diniz" data-id="2" data-imagem="candidato.png" data-vice-nome="Manuela" data-vice-imagem="candidato.png" />
+			<input type="text" value="02" class="candidato" id="candidato-02" data-nome="Jordão" data-id="3" data-imagem="candidato.png" data-vice-nome="Jacky" data-vice-imagem="candidato.png" />
+		</div>
+		
+		<div class="content">
+			<div class="urna">
+				<div>
+					<div class="visor">
+
+						<!-- Principal -->
+						<div id="screen-valid" class="screen">
+							<div class="screen-valid">
+								<div class="screen-content">
+									<div class="top">SEU VOTO PARA</div>
+									<div class="office valid">PRESIDENTE</div>
+									<div class="numbers">Número:
+										<input size="1" maxlength="1" type="text" value="" class="input" readonly />
+										<input size="1" maxlength="1" type="text" value="" class="input" readonly />
+									</div>
+									<div class="name">Nome: <b>Sandro Diniz Jordão</b></div>
+									<div class="vice">Vice-Presidente: <b>Caio Jordão</b></div>
+								</div>
+								<div class="screen-images">
+									<div class="screen-image-office">
+										<div><img src="img/candidato.png" /></div>
+										<div>Presidente</div>
+									</div>
+									<div class="screen-image-vice">
+										<div><img src="img/candidato.png" /></div>
+										<div>Vice-Presidente</div>
+									</div>
+								</div>
+								<div class="screen-line"></div>
+								<div class="screen-info">
+									<div>Aperte a Tecla:</div>
+									<div><span class="screen-text-green">VERDE</span> para <b>CONFIRMAR</b></div>
+									<div><span class="screen-text-orage">LARANJA</span> para <b>CORRIGIR</b></div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Carregando -->
+						<div id="screen-loading" class="screen">
+							<div class="screen-loading">
+								<div></div>
+							</div>
+						</div>
+
+						<!-- Final Votação -->
+						<div id="screen-end" class="screen">
+							<div class="screen-end">FIM</div>
+						</div>
+
+						<!--
+						<div id="visor-valido">
+							<div class="visor-valido">
+								<div>
+									<div class="visor-topo">SEU VOTO PARA</div>
+									<div class="visor-cargo">PRESIDENTE</div>
+									<div class="visor-numero">Número:
+										<input size="1" maxlength="1" type="text" value="5" class="input-animate" />
+										<input size="1" maxlength="1" type="text" value="5" />
+									</div>
+									<div class="visor-nome">Nome: <b>Sandro Diniz Jordão</b></div>
+									<div class="visor-vice">Vice-Presidente: <b>Caio Jordão</b></div>	
+								</div>
+								<div>
+									<div class="visor-imagem-cargo">
+										<div><img src="img/candidato.png" alt="" /></div>
+										<div>Presidente</div>
+									</div>
+									<div class="visor-imagem-vice">
+										<div><img src="img/candidato.png" alt="" /></div>
+										<div>Vice-Presidente</div>
+									</div>
+								</div>
+								<div class="visor-linha"></div>
+								<div class="visor-info">
+									<div>Aperte a Tecla:</div>
+									<div><span class="visor-texto-verde">VERDE</span> para <b>CONFIRMAR</b></div>
+									<div><span class="visor-texto-laranja">LARANJA</span> para <b>CORRIGIR</b></div>
+								</div>
+							</div>
+						</div>
+						-->
+
+						<!-- Voto Branco -->
+						<div id="screen-blank" class="screen">
+							<div class="screen-blank">
+								<div>
+									<div class="top">SEU VOTO PARA</div>
+									<div class="office">PRESIDENTE</div>
+									<div class="visor-texto-branco">VOTO EM BRANCO</div>	
+								</div>
+								<div class="screen-line"></div>
+								<div class="screen-info">
+									<div>Aperte a Tecla:</div>
+									<div><span class="screen-text-green">VERDE</span> para <b>CONFIRMAR</b></div>
+									<div><span class="screen-text-orage">LARANJA</span> para <b>CORRIGIR</b></div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Voto Nulo -->
+						<div id="screen-null" class="screen">
+							<div class="screen-null">
+								<div>
+									<div class="top">SEU VOTO PARA</div>
+									<div class="office">PRESIDENTE</div>
+									<div class="numbers">Número:
+										<input size="1" maxlength="1" type="text" value="5" />
+										<input size="1" maxlength="1" type="text" value="5" />
+									</div>
+									<div class="visor-texto-errado">NÚMERO ERRADO</div>	
+									<div class="visor-texto-nulo">VOTO NULO</div>	
+								</div>
+								<div class="screen-line"></div>
+								<div class="screen-info">
+									<div>Aperte a Tecla:</div>
+									<div><span class="screen-text-green">VERDE</span> para <b>CONFIRMAR</b></div>
+									<div><span class="screen-text-orage">LARANJA</span> para <b>CORRIGIR</b></div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div>
+					<div class="titulo">
+						JUSTIÇA<br>ELEITORAL
+					</div>
+					<div class="teclado">
+						<button class="bnt" data-valor="1">1</button>
+						<button class="bnt" data-valor="2">2</button>
+						<button class="bnt" data-valor="3">3</button>
+						<button class="bnt" data-valor="4">4</button>
+						<button class="bnt" data-valor="5">5</button>
+						<button class="bnt" data-valor="6">6</button>
+						<button class="bnt" data-valor="7">7</button>
+						<button class="bnt" data-valor="8">8</button>
+						<button class="bnt" data-valor="9">9</button>
+						<button class="bnt" data-valor="0">0</button>
+						<div>
+							<button id="btn-branco" class="branco">BRANCO</button>
+							<button id="btn-corrige" class="laranja">CORRIGE</button>
+							<button id="btn-confirma" class="verde">CONFIRMA</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
