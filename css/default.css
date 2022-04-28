@@ -14,12 +14,6 @@
 	text-decoration: none;
 }
 
-img {
-	border: 0;
-	max-width: 100%;
-	max-height: 100%;
-}
-
 body {
 	padding: 0;
 	margin: 0;
@@ -236,7 +230,13 @@ body {
 
 
 
+.hidden {
+	visibility: hidden;
+}
 
+.show {
+	visibility: visible;
+}
 
 .screen .top {
 	width: auto;
@@ -451,7 +451,7 @@ b {
 */
 
 .teste {
-	width: 280px;
+	width: 350px;
 	height: 160px;
 	top: 10px;
 	left: 10px;
@@ -511,20 +511,32 @@ b {
 
 .screen-image-office {
 	width: 130px;
+	height: 168px;
 	text-align: center;
-	background-color: #FFFFFF;
-	border: 1px solid #858585;
+	background-color: transparent;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.screen-image-vice img,
+.screen-image-office img {
+	border: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
 }
 
 .screen-image-vice {
 	width: 120px;
+	height: 160px;
 	text-align: center;
-	background-color: #FFFFFF;
-	border: 1px solid #858585;
-	margin-top: 4px;
+	background-color: transparent;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	position: absolute;
-	font-size: 12px;
-	margin-left: 10px;
+	margin: 2px 0 0 10px;
 }
 
 /* Tela de Voto em Branco */
@@ -575,7 +587,7 @@ b {
 	height: 8px;
 	margin: 1px;
 	background-color: #008000;
-	animation: animate-loading 1.5s linear;
+	animation: animate-loading 1s linear;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;

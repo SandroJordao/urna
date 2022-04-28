@@ -15,19 +15,20 @@
 	<div class="container">
 
 		<div class="teste">
-			<div>[99] Sandro => { <span id="number-99">0</span> }</div>
-			<div>[81] Diniz  => { <span id="number-81">0</span> }</div>
-			<div>[02] Jordão => { <span id="number-02">0</span> }</div>
-			<div>Voto em Branco => { <span id="number-branco">0</span> }</div>
-			<div>Voto Nulo => { <span id="number-nulo">0</span> }</div>
+			<div>[99] John F. Kennedy => Votos: <span id="number-99">0</span></div>
+			<div>[81] Gerald Ford  => Votos: <span id="number-81">0</span></div>
+			<div>[02] George H. W. Bush => Votos: <span id="number-02">0</span></div>
+			<div>Voto em Branco => Votos: <span id="number-branco">0</span></div>
+			<div>Voto Nulo => Votos: <span id="number-nulo">0</span></div>
+			<div><button id="btn-reset" class="branco">RESET</button></div>
 		</div>
 
 		<div id="dados-votacao" style="display: none;">
 			<input type="text" value="1" id="escola" />
 			<input type="text" value="1" id="campanha" />
-			<input type="text" value="99" class="candidato" id="candidato-99" data-nome="Sandro" data-id="1" data-imagem="candidato.png" data-vice-nome="Caio" data-vice-imagem="candidato.png" />
-			<input type="text" value="81" class="candidato" id="candidato-81" data-nome="Diniz" data-id="2" data-imagem="candidato.png" data-vice-nome="Manuela" data-vice-imagem="candidato.png" />
-			<input type="text" value="02" class="candidato" id="candidato-02" data-nome="Jordão" data-id="3" data-imagem="candidato.png" data-vice-nome="Jacky" data-vice-imagem="candidato.png" />
+			<input type="text" id="office-99" data-name="John F. Kennedy" data-id="1" data-image="JohnKennedy.jpg" data-vice-name="Lyndon B. Johnson" data-vice-image="LyndonJohnson.jpg" />
+			<input type="text" id="office-81" data-name="Gerald Ford" data-id="2" data-image="GeraldFord.jpg" data-vice-name="Nelson Rockefeller" data-vice-image="NelsonRockefeller.jpg" />
+			<input type="text" id="office-02" data-name="George H. W. Bush" data-id="3" data-image="GeorgeWBush.jpg" data-vice-name="Dick Cheney" data-vice-image="DickCheney.jpg" />
 		</div>
 		
 		<div class="content">
@@ -39,27 +40,29 @@
 						<div id="screen-valid" class="screen">
 							<div class="screen-valid">
 								<div class="screen-content">
-									<div class="top">SEU VOTO PARA</div>
+									<div class="top visible hidden">SEU VOTO PARA</div>
 									<div class="office valid">PRESIDENTE</div>
 									<div class="numbers">Número:
 										<input size="1" maxlength="1" type="text" value="" class="input" readonly />
 										<input size="1" maxlength="1" type="text" value="" class="input" readonly />
 									</div>
-									<div class="name">Nome: <b>Sandro Diniz Jordão</b></div>
-									<div class="vice">Vice-Presidente: <b>Caio Jordão</b></div>
+									<div class="name visible hidden">Nome: 
+										<b><span id="office-name">...</span></b>
+									</div>
+									<div class="vice visible hidden">Vice-Presidente: 
+										<b><span id="office-name-vice">...</span></b>
+									</div>
 								</div>
-								<div class="screen-images">
+								<div class="screen-images visible hidden">
 									<div class="screen-image-office">
-										<div><img src="img/candidato.png" /></div>
-										<div>Presidente</div>
+										<span id="office-img">...</span>
 									</div>
 									<div class="screen-image-vice">
-										<div><img src="img/candidato.png" /></div>
-										<div>Vice-Presidente</div>
+										<span id="office-img-vice">...</span>
 									</div>
 								</div>
-								<div class="screen-line"></div>
-								<div class="screen-info">
+								<div class="screen-line visible hidden"></div>
+								<div class="screen-info visible hidden">
 									<div>Aperte a Tecla:</div>
 									<div><span class="screen-text-green">VERDE</span> para <b>CONFIRMAR</b></div>
 									<div><span class="screen-text-orage">LARANJA</span> para <b>CORRIGIR</b></div>
@@ -78,39 +81,6 @@
 						<div id="screen-end" class="screen">
 							<div class="screen-end">FIM</div>
 						</div>
-
-						<!--
-						<div id="visor-valido">
-							<div class="visor-valido">
-								<div>
-									<div class="visor-topo">SEU VOTO PARA</div>
-									<div class="visor-cargo">PRESIDENTE</div>
-									<div class="visor-numero">Número:
-										<input size="1" maxlength="1" type="text" value="5" class="input-animate" />
-										<input size="1" maxlength="1" type="text" value="5" />
-									</div>
-									<div class="visor-nome">Nome: <b>Sandro Diniz Jordão</b></div>
-									<div class="visor-vice">Vice-Presidente: <b>Caio Jordão</b></div>	
-								</div>
-								<div>
-									<div class="visor-imagem-cargo">
-										<div><img src="img/candidato.png" alt="" /></div>
-										<div>Presidente</div>
-									</div>
-									<div class="visor-imagem-vice">
-										<div><img src="img/candidato.png" alt="" /></div>
-										<div>Vice-Presidente</div>
-									</div>
-								</div>
-								<div class="visor-linha"></div>
-								<div class="visor-info">
-									<div>Aperte a Tecla:</div>
-									<div><span class="visor-texto-verde">VERDE</span> para <b>CONFIRMAR</b></div>
-									<div><span class="visor-texto-laranja">LARANJA</span> para <b>CORRIGIR</b></div>
-								</div>
-							</div>
-						</div>
-						-->
 
 						<!-- Voto Branco -->
 						<div id="screen-blank" class="screen">
@@ -136,8 +106,8 @@
 									<div class="top">SEU VOTO PARA</div>
 									<div class="office">PRESIDENTE</div>
 									<div class="numbers">Número:
-										<input size="1" maxlength="1" type="text" value="5" />
-										<input size="1" maxlength="1" type="text" value="5" />
+										<input size="1" maxlength="1" type="text" value="" class="input-null" readonly />
+										<input size="1" maxlength="1" type="text" value="" class="input-null" readonly />
 									</div>
 									<div class="visor-texto-errado">NÚMERO ERRADO</div>	
 									<div class="visor-texto-nulo">VOTO NULO</div>	
