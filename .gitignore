@@ -1,0 +1,12 @@
+node_modules/
+public/
+
+# Dados gerados em execução (as eleições de exemplo ficam em storage/seed)
+storage/elections/
+uploads/*
+!uploads/.htaccess
+!uploads/eleicoes-historicas-eua/
+
+api/config.local.php
+.DS_Store
+Thumbs.db
