@@ -1,0 +1,5 @@
+public/
+node_modules/
+storage/
+uploads/
+package-lock.json

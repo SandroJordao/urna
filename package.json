@@ -1,0 +1,30 @@
+{
+  "name": "urna-eletronica",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Urna eletrônica com cadastro de candidatos, apuração e API PHP sem banco de dados.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "seed": "php api/bin/seed.php",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && tsc --noEmit",
+    "test:php": "php api/tests/run.php",
+    "serve": "php -S localhost:8000 server.php"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "prettier": "^3.9.10",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
