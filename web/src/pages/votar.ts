@@ -5,7 +5,9 @@ import { type Ballot, type BoothEvent, type BoothState, canConfirm, initialState
 import { ApiError, api } from '../lib/api'
 import { avatar, h, param, plural } from '../lib/dom'
 import { icon } from '../lib/icons'
+import { modal } from '../lib/forms'
 import { mount } from '../lib/layout'
+import { mascot } from '../lib/mascot'
 import { sound } from '../lib/sound'
 import { speech } from '../lib/speech'
 import type { Election, Office } from '../lib/types'
@@ -122,20 +124,8 @@ class Booth {
         { class: 'booth' },
         h('div', { class: 'booth-title' }, h('h1', null, election.title), h('span', { class: 'badge badge-open' }, 'Votação aberta')),
         this.steps,
-        h('div', { class: 'device' }, this.display, this.keypad()),
-        h(
-          'p',
-          { class: 'shortcuts' },
-          'Teclado: ',
-          h('kbd', null, '0–9'),
-          ' números · ',
-          h('kbd', null, 'B'),
-          ' branco · ',
-          h('kbd', null, 'Backspace'),
-          ' corrige · ',
-          h('kbd', null, 'Enter'),
-          ' confirma',
-        ),
+        h('div', { class: 'device' }, mascot('booth-mascot'), this.display, this.keypad()),
+        this.shortcuts(),
         this.live,
       ),
     )
@@ -176,7 +166,7 @@ class Booth {
     return h(
       'section',
       { class: 'keypad', 'aria-label': 'Teclado da urna' },
-      h('div', { class: 'keypad-brand', 'aria-hidden': 'true' }, 'Urna · v2'),
+      h('div', { class: 'keypad-brand', 'aria-hidden': 'true' }, 'Urna Online'),
       h('div', { class: 'keys' }, ...['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map(key)),
       h(
         'div',
@@ -188,8 +178,36 @@ class Booth {
     )
   }
 
+  private shortcuts(): HTMLElement {
+    const shortcut = (key: string, label: string) => h('span', { class: 'shortcut keyboard-only' }, h('kbd', null, key), label)
+
+    return h(
+      'div',
+      { class: 'shortcuts' },
+      h('span', { class: 'keyboard-only' }, 'Teclado:'),
+      shortcut('0–9', 'números'),
+      shortcut('B', 'branco'),
+      shortcut('Backspace', 'corrige'),
+      shortcut('Enter', 'confirma'),
+      h(
+        'button',
+        { class: 'shortcut shortcut-button', type: 'button', onClick: () => this.openCheatSheet() },
+        h('kbd', null, 'C'),
+        'colinha',
+      ),
+    )
+  }
+
   private onKey(event: KeyboardEvent): void {
     if (event.ctrlKey || event.metaKey || event.altKey) return
+    // Com a colinha aberta, o teclado é dela (Esc fecha o modal).
+    if (document.querySelector('dialog[open]')) return
+
+    if (event.key === 'c' || event.key === 'C') {
+      event.preventDefault()
+      this.openCheatSheet()
+      return
+    }
 
     const digit = /^\d$/.test(event.key) ? event.key : null
     const action = digit ? ({ type: 'digit', digit } as const) : KEYMAP[event.key]
@@ -433,6 +451,47 @@ class Booth {
     )
   }
 
+  /** "Colinha" em um modal, com os candidatos do cargo atual. Clicar em um digita o número. */
+  private openCheatSheet(): void {
+    const office = this.office
+    if (!office || this.state.phase !== 'voting') return
+
+    const candidates = this.election.candidates.filter((c) => c.officeId === office.id)
+    const pick = (number: string) => {
+      dialog.close()
+      if (this.state.digits !== '' || this.state.blank) this.dispatch({ type: 'correct' })
+      for (const digit of number) this.dispatch({ type: 'digit', digit })
+    }
+
+    const list =
+      candidates.length === 0
+        ? h('p', { class: 'muted' }, 'Nenhum candidato cadastrado para este cargo.')
+        : h(
+            'ul',
+            { class: 'cheat-list' },
+            ...candidates.map((c) =>
+              h(
+                'li',
+                null,
+                h(
+                  'button',
+                  { class: 'cheat-item', type: 'button', title: `Digitar ${c.number}`, onClick: () => pick(c.number) },
+                  h('span', { class: 'cheat-number' }, c.number),
+                  avatar(c.name, c.photo, 'avatar cheat-photo'),
+                  h('span', { class: 'cheat-name' }, c.name, c.party ? h('small', null, c.party) : null),
+                ),
+              ),
+            ),
+          )
+
+    const dialog = modal(
+      `Colinha · ${office.name}`,
+      h('div', { class: 'dialog-body cheat' }, list),
+      h('div', { class: 'dialog-foot cheat-foot' }, 'Clique em um candidato para digitar o número dele.'),
+    )
+    dialog.classList.add('cheat-dialog')
+  }
+
   private savingScreen(): HTMLElement {
     return h(
       'div',
@@ -445,9 +504,9 @@ class Booth {
   private doneScreen(): HTMLElement {
     return h(
       'div',
-      { class: 'screen screen-center enter' },
+      { class: 'screen screen-center screen-fim' },
       h('div', { class: 'fim' }, 'FIM'),
-      h('div', { class: 'check-circle', 'aria-hidden': 'true' }, '✓'),
+      mascot('fim-mascot'),
       h('p', { class: 'muted' }, 'Seu voto foi registrado. Obrigado!'),
       h('button', { class: 'btn', type: 'button', onClick: () => this.nextVoter() }, 'Próximo eleitor'),
       h('div', { class: 'countdown' }),

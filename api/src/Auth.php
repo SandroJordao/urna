@@ -11,8 +11,10 @@ use Urna\Http\HttpException;
  */
 final class Auth
 {
-    public function __construct(private readonly string $passwordHash)
-    {
+    public function __construct(
+        private readonly string $user,
+        private readonly string $passwordHash,
+    ) {
     }
 
     public function start(): void
@@ -44,12 +46,16 @@ final class Auth
         }
     }
 
-    public function login(string $password): void
+    public function login(string $user, string $password): void
     {
-        if (!password_verify($password, $this->passwordHash)) {
+        // Verifica a senha mesmo com usuário errado, para não revelar qual dos dois falhou.
+        $validUser = hash_equals($this->user, $user);
+        $validPassword = password_verify($password, $this->passwordHash);
+
+        if (!$validUser || !$validPassword) {
             // Atrasa tentativas de força bruta.
             usleep(800_000);
-            throw new HttpException(401, 'Senha incorreta.');
+            throw new HttpException(401, 'Usuário ou senha incorretos.');
         }
 
         session_regenerate_id(true);

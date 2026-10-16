@@ -3,6 +3,7 @@ import '../styles/base.css'
 import { api } from '../lib/api'
 import { h, statusBadge } from '../lib/dom'
 import { mount } from '../lib/layout'
+import { mascot } from '../lib/mascot'
 import type { ElectionSummary } from '../lib/types'
 
 const main = mount('home')
@@ -15,20 +16,25 @@ main.append(
     h(
       'section',
       { class: 'hero' },
-      h('span', { class: 'eyebrow' }, 'Urna eletrônica · v2'),
-      h('h1', null, 'Vote, apure e ', h('span', { class: 'gradient-text' }, 'confira'), '.'),
-      h(
-        'p',
-        null,
-        'Cadastre eleições com vários cargos e candidatos com foto, vote pelo mouse, toque ou teclado e acompanhe uma apuração com verificação de integridade.',
-      ),
       h(
         'div',
-        { class: 'features' },
-        ...['Vários cargos por eleição', 'Teclado físico', 'Modo áudio', 'Boletim de urna', 'Sem banco de dados'].map((f) =>
-          h('span', { class: 'feature' }, f),
+        { class: 'hero-text' },
+        h('span', { class: 'eyebrow' }, 'Urna Online'),
+        h('h1', null, 'Vote, apure e ', h('span', { class: 'gradient-text' }, 'confira'), '!'),
+        h(
+          'p',
+          null,
+          'Cadastre eleições com vários cargos e candidatos com foto, vote pelo mouse, toque ou teclado e acompanhe uma apuração com verificação de integridade.',
+        ),
+        h(
+          'div',
+          { class: 'features' },
+          ...['Vários cargos por eleição', 'Teclado físico', 'Modo áudio', 'Boletim de urna', 'Sem banco de dados'].map((f) =>
+            h('span', { class: 'feature' }, f),
+          ),
         ),
       ),
+      mascot('hero-mascot'),
     ),
     h('div', { class: 'section-title' }, h('h2', null, 'Eleições')),
     grid,

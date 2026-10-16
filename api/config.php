@@ -12,8 +12,9 @@ declare(strict_types=1);
  *   php -r "echo password_hash('minha-senha', PASSWORD_DEFAULT);"
  */
 $config = [
-    // Senha padrão: "admin". Troque em config.local.php fora do ambiente local.
-    'admin_password_hash' => '$2y$10$kHewmKQOSDgpBSH3/EFbaOusFqVzECBAqScjgkpUGQlbCIn1mTVb2',
+    // Credenciais do painel. Só o hash da senha fica no código.
+    'admin_user' => 'borboleta',
+    'admin_password_hash' => '$2y$10$8voQmZYp.ojJtvST7kNIquwna1iDQfZgrDTtZKnpKd4ZYDZaCfR9W',
 
     'timezone' => 'America/Sao_Paulo',
 

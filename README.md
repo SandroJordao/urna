@@ -183,11 +183,14 @@ PHP_SERVER=http://localhost:8000 npm run dev      # se estiver usando php -S
 
 O Vite repassa `/api` e `/uploads` para o PHP.
 
-**Administração:** senha `admin`. Para trocá-la, crie `api/config.local.php`:
+**Administração:** login e senha definidos em `api/config.php` (só o hash da senha fica no código). Para trocá-los, crie `api/config.local.php`:
 
 ```php
 <?php
-return ['admin_password_hash' => '$2y$10$...']; // php -r "echo password_hash('nova', PASSWORD_DEFAULT);"
+return [
+    'admin_user' => 'novo-login',
+    'admin_password_hash' => '$2y$10$...', // php -r "echo password_hash('nova', PASSWORD_DEFAULT);"
+];
 ```
 
 ### Scripts

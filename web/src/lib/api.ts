@@ -51,7 +51,7 @@ const e = (slug: string) => `/elections/${encodeURIComponent(slug)}`
 
 export const api = {
   session: () => request<{ admin: boolean }>('GET', '/auth'),
-  login: (password: string) => request<{ admin: boolean }>('POST', '/auth/login', { password }),
+  login: (user: string, password: string) => request<{ admin: boolean }>('POST', '/auth/login', { user, password }),
   logout: () => request<{ admin: boolean }>('POST', '/auth/logout'),
 
   elections: () => request<ElectionSummary[]>('GET', '/elections'),

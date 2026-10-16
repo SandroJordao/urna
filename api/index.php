@@ -28,7 +28,7 @@ $store = new JsonStore($config['storage_dir']);
 $photos = new PhotoStorage($config['uploads_dir'], $config['photo']);
 $elections = new ElectionService($store, $photos);
 $ballots = new BallotService($store);
-$auth = new Auth($config['admin_password_hash']);
+$auth = new Auth($config['admin_user'], $config['admin_password_hash']);
 $router = new Router();
 
 $ok = static fn (mixed $data = null, int $status = 200): array => [$status, $data];
@@ -38,7 +38,8 @@ $ok = static fn (mixed $data = null, int $status = 200): array => [$status, $dat
 $router->add('GET', '/auth', static fn () => $ok(['admin' => $auth->isAdmin()]));
 
 $router->add('POST', '/auth/login', static function (Request $r) use ($auth, $ok) {
-    $auth->login((string) ($r->json()['password'] ?? ''));
+    $body = $r->json();
+    $auth->login((string) ($body['user'] ?? ''), (string) ($body['password'] ?? ''));
     return $ok(['admin' => true]);
 });
 

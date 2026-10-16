@@ -37,14 +37,15 @@ async function start(): Promise<void> {
 // Login ----------------------------------------------------------------------
 
 function login(): void {
+  const user = input({ type: 'text', name: 'user', autocomplete: 'username', autocapitalize: 'none', spellcheck: 'false', required: true })
   const password = input({ type: 'password', name: 'password', autocomplete: 'current-password', required: true })
   const submit = h('button', { class: 'btn btn-primary', type: 'submit' }, 'Entrar')
   const form = h(
     'form',
     { class: 'card login' },
     h('div', null, h('span', { class: 'eyebrow' }, 'Área restrita'), h('h1', null, 'Administração')),
+    field('Login', 'user', user),
     field('Senha', 'password', password),
-    h('p', { class: 'muted', style: 'margin:0;font-size:.85rem' }, 'Senha padrão de demonstração: ', h('code', null, 'admin')),
     submit,
   )
 
@@ -52,7 +53,7 @@ function login(): void {
     event.preventDefault()
     void busy(submit, async () => {
       try {
-        await api.login(password.value)
+        await api.login(user.value.trim(), password.value)
         await shell()
       } catch (error) {
         showErrors(form, error)
@@ -62,7 +63,7 @@ function login(): void {
   })
 
   main.replaceChildren(form)
-  password.focus()
+  user.focus()
 }
 
 // Estrutura ------------------------------------------------------------------
