@@ -206,7 +206,7 @@ return [
 
 ## Créditos
 
-Os retratos dos presidentes e vices americanos usados na eleição de exemplo são fotos oficiais do governo dos EUA. Os demais candidatos de exemplo são fictícios.
+As eleições de exemplo (melhor banda de rock, jogo de video game e filme de terror) são só para diversão. Os nomes de bandas, jogos e filmes pertencem aos seus respectivos donos.
 
 ---
 

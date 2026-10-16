@@ -56,12 +56,16 @@ export function avatar(name: string, photo: string | null, className = 'avatar')
     return h('img', { class: className, src: assetUrl(photo), alt: `Foto de ${name}`, loading: 'lazy', decoding: 'async' })
   }
 
-  // Primeiro e último nome, ignorando "de", "da", "dos" etc.
-  const words = name.split(/\s+/).filter((word) => word && !/^(d[aeo]s?|e)$/i.test(word))
-  const initials = [words[0], words.length > 1 ? words.at(-1) : undefined]
-    .map((word) => word?.[0] ?? '')
-    .join('')
-    .toUpperCase()
+  // Primeiro e último nome, ignorando "de", "da", "dos", artigos ("o", "the") e algarismos romanos.
+  const words = name
+    .split(/\s+/)
+    .map((word) => word.replace(/[^\p{L}\p{N}]/gu, ''))
+    .filter((word) => word && !/^(d[aeo]s?|e|[oa]s?|the|of|[ivx]+)$/i.test(word))
+  const initials =
+    [words[0], words.length > 1 ? words.at(-1) : undefined]
+      .map((word) => word?.[0] ?? '')
+      .join('')
+      .toUpperCase() || name.trim().charAt(0).toUpperCase()
 
   return h('div', { class: `${className} avatar-initials`, role: 'img', 'aria-label': name, style: `--hue: ${hue(name)}` }, initials)
 }

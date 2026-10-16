@@ -1,0 +1,111 @@
+{
+    "schema": 1,
+    "slug": "melhor-jogo-de-video-game",
+    "title": "Melhor Jogo de Video Game",
+    "description": "Do fliperama ao console: escolha o maior jogo de todos os tempos. O número é o ano de lançamento.",
+    "status": "open",
+    "createdAt": "2026-10-16T10:00:00-03:00",
+    "updatedAt": "2026-10-16T10:00:00-03:00",
+    "openedAt": "2026-10-16T10:00:00-03:00",
+    "closedAt": null,
+    "offices": [
+        {
+            "id": "jogo",
+            "name": "Jogo",
+            "digits": 2,
+            "hasVice": false
+        }
+    ],
+    "candidates": [
+        {
+            "id": "9b667c34785a",
+            "officeId": "jogo",
+            "number": "80",
+            "name": "Pac-Man",
+            "party": "Namco · Fliperama",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "3110a91706a8",
+            "officeId": "jogo",
+            "number": "84",
+            "name": "Tetris",
+            "party": "Alexey Pajitnov · PC",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "47bdfe9e6aef",
+            "officeId": "jogo",
+            "number": "85",
+            "name": "Super Mario Bros.",
+            "party": "Nintendo · NES",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "34a5ee180679",
+            "officeId": "jogo",
+            "number": "91",
+            "name": "Street Fighter II",
+            "party": "Capcom · Fliperama",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "0ae5f7bdbcff",
+            "officeId": "jogo",
+            "number": "98",
+            "name": "The Legend of Zelda: Ocarina of Time",
+            "party": "Nintendo · Nintendo 64",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "65c9004e3dd5",
+            "officeId": "jogo",
+            "number": "04",
+            "name": "GTA: San Andreas",
+            "party": "Rockstar Games · PlayStation 2",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "5ff5ad8050ef",
+            "officeId": "jogo",
+            "number": "11",
+            "name": "Minecraft",
+            "party": "Mojang · PC",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "ae5cf35e65a1",
+            "officeId": "jogo",
+            "number": "13",
+            "name": "The Last of Us",
+            "party": "Naughty Dog · PlayStation 3",
+            "photo": null,
+            "vice": null
+        }
+    ],
+    "ballots": 0,
+    "tally": {
+        "jogo": {
+            "candidates": {
+                "11": 0,
+                "13": 0,
+                "80": 0,
+                "84": 0,
+                "85": 0,
+                "91": 0,
+                "98": 0,
+                "04": 0
+            },
+            "blank": 0,
+            "null": 0
+        }
+    },
+    "rdv": []
+}

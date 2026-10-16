@@ -1,0 +1,111 @@
+{
+    "schema": 1,
+    "slug": "melhor-filme-de-terror",
+    "title": "Melhor Filme de Terror",
+    "description": "Apague a luz e vote no filme que mais tirou seu sono. O número é o ano de estreia.",
+    "status": "open",
+    "createdAt": "2026-10-16T10:00:00-03:00",
+    "updatedAt": "2026-10-16T10:00:00-03:00",
+    "openedAt": "2026-10-16T10:00:00-03:00",
+    "closedAt": null,
+    "offices": [
+        {
+            "id": "filme",
+            "name": "Filme",
+            "digits": 2,
+            "hasVice": false
+        }
+    ],
+    "candidates": [
+        {
+            "id": "5efa352cfc61",
+            "officeId": "filme",
+            "number": "60",
+            "name": "Psicose",
+            "party": "Alfred Hitchcock",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "27ea97d145f4",
+            "officeId": "filme",
+            "number": "73",
+            "name": "O Exorcista",
+            "party": "William Friedkin",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "f68ba85fc78b",
+            "officeId": "filme",
+            "number": "78",
+            "name": "Halloween",
+            "party": "John Carpenter",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "ee0a1e26744b",
+            "officeId": "filme",
+            "number": "79",
+            "name": "Alien, o 8º Passageiro",
+            "party": "Ridley Scott",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "fe46ff4cb732",
+            "officeId": "filme",
+            "number": "80",
+            "name": "O Iluminado",
+            "party": "Stanley Kubrick",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "e99eee29cf79",
+            "officeId": "filme",
+            "number": "84",
+            "name": "A Hora do Pesadelo",
+            "party": "Wes Craven",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "7e66270e08a6",
+            "officeId": "filme",
+            "number": "17",
+            "name": "Corra!",
+            "party": "Jordan Peele",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "66ba724c56af",
+            "officeId": "filme",
+            "number": "18",
+            "name": "Hereditário",
+            "party": "Ari Aster",
+            "photo": null,
+            "vice": null
+        }
+    ],
+    "ballots": 0,
+    "tally": {
+        "filme": {
+            "candidates": {
+                "17": 0,
+                "18": 0,
+                "60": 0,
+                "73": 0,
+                "78": 0,
+                "79": 0,
+                "80": 0,
+                "84": 0
+            },
+            "blank": 0,
+            "null": 0
+        }
+    },
+    "rdv": []
+}

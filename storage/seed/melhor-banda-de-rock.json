@@ -1,0 +1,111 @@
+{
+    "schema": 1,
+    "slug": "melhor-banda-de-rock",
+    "title": "Melhor Banda de Rock",
+    "description": "Qual banda merece o trono do rock? O número de cada candidata é o ano em que ela foi formada.",
+    "status": "open",
+    "createdAt": "2026-10-16T10:00:00-03:00",
+    "updatedAt": "2026-10-16T10:00:00-03:00",
+    "openedAt": "2026-10-16T10:00:00-03:00",
+    "closedAt": null,
+    "offices": [
+        {
+            "id": "banda",
+            "name": "Banda",
+            "digits": 2,
+            "hasVice": false
+        }
+    ],
+    "candidates": [
+        {
+            "id": "46f22fabfc37",
+            "officeId": "banda",
+            "number": "60",
+            "name": "The Beatles",
+            "party": "Reino Unido · Liverpool",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "bbc5b56950e6",
+            "officeId": "banda",
+            "number": "65",
+            "name": "Pink Floyd",
+            "party": "Reino Unido · Londres",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "3b6fd9e49464",
+            "officeId": "banda",
+            "number": "68",
+            "name": "Led Zeppelin",
+            "party": "Reino Unido · Londres",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "1d86cebb6bd5",
+            "officeId": "banda",
+            "number": "70",
+            "name": "Queen",
+            "party": "Reino Unido · Londres",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "8178e74b2c02",
+            "officeId": "banda",
+            "number": "73",
+            "name": "AC/DC",
+            "party": "Austrália · Sydney",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "332651489462",
+            "officeId": "banda",
+            "number": "81",
+            "name": "Metallica",
+            "party": "EUA · Los Angeles",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "0f7c32d37a73",
+            "officeId": "banda",
+            "number": "82",
+            "name": "Legião Urbana",
+            "party": "Brasil · Brasília",
+            "photo": null,
+            "vice": null
+        },
+        {
+            "id": "49d928195029",
+            "officeId": "banda",
+            "number": "87",
+            "name": "Nirvana",
+            "party": "EUA · Aberdeen",
+            "photo": null,
+            "vice": null
+        }
+    ],
+    "ballots": 0,
+    "tally": {
+        "banda": {
+            "candidates": {
+                "60": 0,
+                "65": 0,
+                "68": 0,
+                "70": 0,
+                "73": 0,
+                "81": 0,
+                "82": 0,
+                "87": 0
+            },
+            "blank": 0,
+            "null": 0
+        }
+    },
+    "rdv": []
+}

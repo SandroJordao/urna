@@ -5,7 +5,6 @@ public/
 storage/elections/
 uploads/*
 !uploads/.htaccess
-!uploads/eleicoes-historicas-eua/
 
 api/config.local.php
 .DS_Store

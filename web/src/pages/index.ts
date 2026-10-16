@@ -29,7 +29,7 @@ main.append(
         h(
           'div',
           { class: 'features' },
-          ...['Vários cargos por eleição', 'Teclado físico', 'Modo áudio', 'Boletim de urna', 'Sem banco de dados'].map((f) =>
+          ...['Vários cargos por eleição', 'Teclado físico', 'Modo áudio', 'Boletim de urna'].map((f) =>
             h('span', { class: 'feature' }, f),
           ),
         ),
